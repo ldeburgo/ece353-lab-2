@@ -24,7 +24,7 @@ void init_eeprom(void) {
     _init_cur_addr();
 }
 
-void eeprom_write_msg(midimsg_t *msg) {
+void eeprom_write_msg(MidiMsg *msg) {
     // write the time elapsed between this and previous note
     eeprom_busy_wait(); // wait for EEPROM to be ready
     eeprom_write_word((uint16_t *) cur_write_addr, msg->time_elapsed);
@@ -43,7 +43,7 @@ void eeprom_write_msg(midimsg_t *msg) {
     eeprom_write_word((uint16_t *) 0, cur_write_addr);
 }
 
-void eeprom_read_msg(midimsg_t *msg) {
+void eeprom_read_msg(MidiMsg *msg) {
     // check if we've wrapped around useful data
     if (cur_read_addr >= cur_write_addr) reset_read_addr();
 

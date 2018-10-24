@@ -13,7 +13,7 @@ int is_data_byte(uint8_t data) {
     return ~data & 0x80;
 }
 
-void midi_err_check(midimsg_t *msg) {
+void midi_err_check(MidiMsg *msg) {
     if (!is_start_byte(msg->byte1) ||
             !is_data_byte(msg->byte2) ||
             !is_data_byte(msg->byte3)) {

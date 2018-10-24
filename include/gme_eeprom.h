@@ -19,14 +19,14 @@ void init_eeprom(void);
  *
  * Each MIDI message takes up 5 bytes.
  */
-void eeprom_write_msg(midimsg_t *msg);
+void eeprom_write_msg(MidiMsg *msg);
 
 /**
  * Reads a MIDI message from EEPROM.
  * Reading is sequential, continues from the previous address.
  * Wraps upon meeting end of useful data.
  */
-void eeprom_read_msg(midimsg_t *msg);
+void eeprom_read_msg(MidiMsg *msg);
 
 /**
  * Resets the current read address.

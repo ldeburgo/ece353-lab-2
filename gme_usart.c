@@ -53,7 +53,7 @@ void init_usart(void) {
     UBRRH = UBRRH_VALUE;
 }
 
-void usart_read_msg(midimsg_t *msg) {
+void usart_read_msg(MidiMsg *msg) {
     // get the first byte
     while (!(UCSRA & (1 << RXC))); // wait until receive is complete
     msg->byte1 = UDR; // store the byte
@@ -70,7 +70,7 @@ void usart_read_msg(midimsg_t *msg) {
     _frame_err_check();
 }
 
-void usart_send_msg(midimsg_t *msg) {
+void usart_send_msg(MidiMsg *msg) {
     // send the first byte
     while (!(UCSRA & (1 << UDRE))); // wait until ready to transmit
     UDR = msg->byte1;

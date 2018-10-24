@@ -12,6 +12,12 @@
  * * STOP bit, the ninth bit equal to 1
  */
 typedef struct {
+    /**
+     * Time elapsed between this note and the previous note in ms.
+     * Equal to zero for the first note.
+     */
+    uint16_t time_elapsed;
+
     /** Byte 1 - Status Byte
      * MSB is ON: 0b1xxxxxxx
      * Contains code for Note On, Note Off, other ctrl, ChlD
@@ -27,13 +33,7 @@ typedef struct {
      * Contains velocity of note
      */
     uint8_t byte3;
-
-    /**
-     * Time elapsed between this note and the previous note in ms.
-     * Equal to zero for the first note.
-     */
-     uint16_t time_elapsed;
-} midimsg_t;
+} MidiMsg;
 
 /**
  * Determines if the given byte is the start byte of a MIDI
@@ -51,6 +51,6 @@ int is_data_byte(uint8_t data);
  * Determines if the given MIDI message is of an appropriate
  * format.
  */
-void midi_err_check(midimsg_t *msg);
+void midi_err_check(MidiMsg *msg);
 
 #endif /* GME_MIDIMSG_H_ */

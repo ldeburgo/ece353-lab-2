@@ -14,12 +14,12 @@ void init_usart(void);
  * Receives data for a MIDI message from USART, storing
  * the data inside the passed midi message type.
  */
-void usart_read_msg(midimsg_t *msg);
+void usart_read_msg(MidiMsg *msg);
 
 /**
  * Sends a MIDI message out to USART.
  */
-void usart_send_msg(midimsg_t *msg);
+void usart_send_msg(MidiMsg *msg);
 
 /**
  * Returns true if there's data in the input buffer for USART

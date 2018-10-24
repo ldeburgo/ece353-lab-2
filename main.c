@@ -12,8 +12,8 @@ uint8_t is_recording_flag;
 uint8_t is_playback_flag;
 
 // methods to handle different states the GME can be in
-void handle_recording(midimsg_t *msg);
-void handle_playback(midimsg_t *msg);
+void handle_recording(MidiMsg *msg);
+void handle_playback(MidiMsg *msg);
 void handle_modification(uint16_t *msg);
 
 // "event handlers" for when we switch to recording or playback
@@ -36,7 +36,7 @@ int main (void) {
     init_all();
 
     // will modify one stack-allocated midi message struct
-    midimsg_t msg;
+    MidiMsg msg;
 
     // main program loop
     while (1) {
@@ -56,7 +56,7 @@ int main (void) {
     } // end main program loop
 }
 
-void handle_recording(midimsg_t *msg) {
+void handle_recording(MidiMsg *msg) {
     // if recording flag is zero, we've just switched
     if (!is_recording_flag) {
         is_recording_flag = 1;
@@ -76,7 +76,7 @@ void handle_recording(midimsg_t *msg) {
     }
 }
 
-void handle_playback(midimsg_t *msg) {
+void handle_playback(MidiMsg *msg) {
     // if playback flag is zero, we've just switched
     if (!is_playback_flag) {
         is_playback_flag = 1;
