@@ -8,8 +8,8 @@
 #include <util/delay.h>
 
 // flags to detect when we've switched from one mode to another
-uint8_t is_recording_flag;
-uint8_t is_playback_flag;
+static volatile uint8_t is_recording_flag = 0;
+static volatile uint8_t is_playback_flag = 0;
 
 // methods to handle different states the GME can be in
 void handle_recording(MidiMsg *msg);
@@ -108,6 +108,9 @@ void handle_playback(MidiMsg *msg) {
 
     // write the message out to USART
     usart_send_msg(msg);
+
+    // reset the timer
+    reset_timer();
 }
 
 void handle_modification(uint16_t *time_elapsed) {

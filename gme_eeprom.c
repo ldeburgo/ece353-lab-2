@@ -16,9 +16,9 @@
 static void _init_cur_addr(void);
 
 // current non-occupied address to be written to next.
-uint16_t cur_write_addr = 2;
+static uint16_t cur_write_addr = 2;
 // current occupied address to be read.
-uint16_t cur_read_addr = 2;
+static uint16_t cur_read_addr = 2;
 
 void init_eeprom(void) {
     _init_cur_addr();

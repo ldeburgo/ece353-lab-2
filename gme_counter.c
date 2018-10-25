@@ -5,7 +5,7 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
-static uint8_t _overflow_occurred = 0;
+static volatile uint8_t _overflow_occurred = 0;
 
 void init_counter_interrupts(void) {
     /**
